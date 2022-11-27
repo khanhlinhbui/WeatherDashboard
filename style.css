@@ -2,5 +2,14 @@
     border-style: solid;
 }
 .box-spacing{
-    margin:10px;
+    margin: 10px;
+}
+.box-padding{
+    padding: 10px;
+}
+.search-button{
+    
+}
+.recent-searched-city-button{
+    size: 
 }
