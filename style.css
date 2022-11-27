@@ -1,3 +1,6 @@
 .frame{
     border-style: solid;
 }
+.box-spacing{
+    margin:10px;
+}
