@@ -1,5 +1,6 @@
 $(document).ready(function() {
     let myAPIKey = "0946b628138388ac70a5b0e5415fce8c";
+    let recentSearchCityLi = [];
     $('.search-button').click(function() {
         let city = $("#search-box").val();
         console.log(city)
@@ -10,6 +11,10 @@ $(document).ready(function() {
         .then(function (data){
             console.log(data);
         })
+        recentSearchCityLi.push(city)
+        console.log(recentSearchCityLi)
+        localStorage.setItem("recentSearchCityKey",recentSearchCityLi)
     })
+
 })
 
