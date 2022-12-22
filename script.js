@@ -1,6 +1,8 @@
 $(document).ready(function() {
-    let myAPIKey = "0946b628138388ac70a5b0e5415fce8c";
     let recentSearchCityLi = [];
+    if (localStorage.getItem("city") != null) { recentSearchCityLi = JSON.parse(localStorage.getItem("city")); }
+    console.log(recentSearchCityLi)
+    let myAPIKey = "0946b628138388ac70a5b0e5415fce8c";
     $('.search-button').click(function() {
         let city = $("#search-box").val();
         console.log(city)
@@ -11,10 +13,15 @@ $(document).ready(function() {
         .then(function (data){
             console.log(data);
         })
+        // Create local storage has value of  recent search city resulta into a list. 
         recentSearchCityLi.push(city)
         console.log(recentSearchCityLi)
-        localStorage.setItem("recentSearchCityKey",recentSearchCityLi)
+        localStorage.setItem("city", JSON.stringify(recentSearchCityLi));
     })
+    for (let i=0; i<recentSearchCityLi.length;i++){
+        recentSearchCityResult = document.createElement("button")
+        recentSearchCityResult.text((recentSearchCityLi[i])) 
+    }
 
 })
 
