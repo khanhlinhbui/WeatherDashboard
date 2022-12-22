@@ -16,6 +16,17 @@ $(document).ready(function() {
         // Create local storage has value of  recent search city resulta into a list. 
         recentSearchCityLi.push(city)
         console.log(recentSearchCityLi)
+        while (recentSearchCityLi.length > 8){
+            recentSearchCityLi.shift()
+        }
+        $('#list-recent-search-city-result').empty(); 
+        for (let i=0; i<recentSearchCityLi.length;i++){
+            recentSearchCityResult = $('<button/>', {
+                text: recentSearchCityLi[i]  ,
+                id: 'recentSearchCityButton' + i,
+            });
+            $('#list-recent-search-city-result').append(recentSearchCityResult)
+        }
         localStorage.setItem("city", JSON.stringify(recentSearchCityLi));
     })
     for (let i=0; i<recentSearchCityLi.length;i++){
