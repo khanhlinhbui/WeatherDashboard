@@ -19,9 +19,12 @@ $(document).ready(function() {
         localStorage.setItem("city", JSON.stringify(recentSearchCityLi));
     })
     for (let i=0; i<recentSearchCityLi.length;i++){
-        recentSearchCityResult = document.createElement("button")
-        recentSearchCityResult.text((recentSearchCityLi[i])) 
+        recentSearchCityResult = $('<button/>', {
+            text: recentSearchCityLi[i]  ,
+            id: 'recentSearchCityButton' + i,
+        });
+        $('#list-recent-search-city-result').append(recentSearchCityResult)
     }
-
 })
+
 
