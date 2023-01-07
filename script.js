@@ -17,16 +17,20 @@ $(document).ready(function() {
             .then(function(data2){
                 console.log(data2)
             })
+            let kevtofahTemp = 1.8*(data.main.temp-273)+32; 
+            $('#temperature').text("Temperature"+":"+" "+ kevtofahTemp.toFixed(2) + " " + "F") 
+            $('#humidity').text("Humidity"+":"+" "+ data.main.humidity + "%")
+            $('#wind').text("Wind"+":"+" "+ data.wind.speed +" " + "MPH")
         })
     }
     getWeatherFocast(recentSearchCityLi[recentSearchCityLi.length-1]) // Calling the function 
-    $('#recentSearchedCityForecast').text(recentSearchCityLi[recentSearchCityLi.length-1]+' '+'('+currentDate+')')
-    $('.search-button').click(function() {
+    $('#recentSearchedCityForecast').text(recentSearchCityLi[recentSearchCityLi.length-1]+' '+'('+currentDate+')') // added context to recent searched city weather forcast
+    // search button function 
+    $('.search-button').click(function() { 
         let city = $("#search-box").val();
-       getWeatherFocast(city);
+        getWeatherFocast(city);
         // Create local storage has value of  recent search city resulta into a list. 
-        recentSearchCityLi.push(city)
-        console.log(recentSearchCityLi)
+        recentSearchCityLi.push(city)  
         while (recentSearchCityLi.length > 8){
             recentSearchCityLi.shift()
         }
