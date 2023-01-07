@@ -16,11 +16,16 @@ $(document).ready(function() {
             })
             .then(function(data2){
                 console.log(data2)
+                let kev2fahDate1 = 1.8*(data2.list[1].main.temp-273)+32; 
+                $("#date1").text(moment().format('L').valueOf(data2.list[1].dt))
+                $("#date1Temp").text("Temperature: " +kev2fahDate1.toFixed(2)+"F")
+                $("#date1Wind").text("Wind: "+ data2.list[1].wind.speed+ " "+ "MPH" )
+                $("#date1Humidity").text("Humidity: "+ data2.list[1].main.humidity + "%")
             })
             let kevtofahTemp = 1.8*(data.main.temp-273)+32; 
-            $('#temperature').text("Temperature"+":"+" "+ kevtofahTemp.toFixed(2) + " " + "F") 
-            $('#humidity').text("Humidity"+":"+" "+ data.main.humidity + "%")
-            $('#wind').text("Wind"+":"+" "+ data.wind.speed +" " + "MPH")
+            $('#temperature').text("Temperature: "+ kevtofahTemp.toFixed(2) + " " + "F") 
+            $('#humidity').text("Humidity:  "+ data.main.humidity + "%")
+            $('#wind').text("Wind:  "+ data.wind.speed +" " + "MPH")
         })
     }
     getWeatherFocast(recentSearchCityLi[recentSearchCityLi.length-1]) // Calling the function 
